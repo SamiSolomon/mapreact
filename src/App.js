@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Entry from "./componenets/Entry";
+import emojipedia from "./componenets/emojipedia";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function createEntry(emojiTerm){
+    return(
+        <Entry 
+        id={emojiTerm.id}
+        emoji={emojiTerm.emoji}
+        emojiName={emojiTerm.emojiName}
+        description={emojiTerm.description}
+         />
+    );
 }
 
-export default App;
+function app(){
+    return (
+    <div>
+        <h1>
+           <span>emojipedia</span>
+        </h1>
+        <dl className="dictionary">
+           {emojipedia.map(createEntry)}
+        </dl>
+      
+    </div>
+    
+    );
+}
+
+
+export default app;
